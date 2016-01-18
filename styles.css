@@ -1,0 +1,33 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: lightblue;
+}
+
+h1 {
+	text-align: center;
+}
+
+#main-content {
+	display: table;
+}
+
+ul {
+	list-style-type: none;
+	margin-left: 540px;
+}
+
+li {
+	height: 80px;
+	width: 300px;
+	font-size: 30px;
+}
+
+img {
+	width: 150px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}

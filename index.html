@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Family Guy Characters</title>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<script type="text/javascript" src="Ajax.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Family Guy Characters</h1>
+			</div>
+			
+			<div id="main-content">
+			</div>
+			
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		function callback(xhr) {
+			var data_info = JSON.parse(xhr.responseText);
+			
+			var main_content = document.getElementById('main-content');
+			main_content.innerHTML = '';
+			
+			var list = document.createElement('ul');
+			for (var i = 0; i < data_info.length; i++) {
+				var img = document.createElement('img');
+				var li_item = document.createElement('li');				
+				img.src = data_info[i].img;				
+				li_item.innerHTML = '<a href="#">' + data_info[i].name + '</a>';				
+				list.appendChild(img);
+				list.appendChild(li_item);				
+			}
+			main_content.appendChild(list);
+			
+			for (var i = 0; i < data_info.length; i++) {
+				document.getElementsByTagName('li').addEventListener('click', function(args) {
+					var span = document.createElement('span');
+					document.getElementsByTagName('li').appendChild(span);
+				});
+			}
+		}
+	
+		Ajax.makeRequest('GET', 'request_data.php', {}, true, callback);
+	</script>
+</html>
